@@ -1,69 +1,52 @@
-# Coffee-Sales
-# 📊 Coffee Sales Analysis
+# Coffee Shop Sales Analysis (Power BI)
 
-## 📌 Project Overview
-This project focuses on analyzing coffee sales data to uncover meaningful business insights such as revenue trends, best-selling products, customer purchasing behavior, and time-based performance.  
-The goal is to support **data-driven decision making** using interactive dashboards and analytical techniques.
+An interactive Power BI dashboard analysing **149,116 transactions** from a three-store coffee chain in New York (January–June 2023). It shows when, where and what customers buy, to help with staffing, inventory and promotions.
 
----
-
-## 🎯 Objectives
-- Analyze total sales and revenue trends
-- Identify top-performing coffee products
-- Understand customer purchase patterns
-- Track monthly, daily, and hourly sales performance
-- Provide actionable insights for business growth
+![Dashboard](dashboard.png)
 
 ---
 
-## 🛠️ Tools & Technologies
-- **Power BI** – Data visualization & dashboarding  
-- **Microsoft Excel / CSV** – Data source  
-- **DAX** – Calculated measures & KPIs  
-- **Data Cleaning & Transformation** – Power Query
+## Key findings
 
----
+| Finding | Number |
+|---|---|
+| Total revenue (Jan–Jun 2023) | **$698,812** from 214,470 items sold |
+| Revenue growth, January → June | **+103.8%**, with the biggest jumps in March (+29.8% MoM) and May (+31.8% MoM) |
+| Morning rush (7–10am) share of revenue | **45.8%**, peaking at 10am |
+| Top category | **Coffee, 38.6%** of revenue, then Tea at 28.1% |
+| Best-selling product type | **Barista Espresso** ($91.4K), then Brewed Chai ($77.1K) and Hot Chocolate ($72.4K) |
+| Store split | Very even: Hell's Kitchen 33.8%, Astoria 33.2%, Lower Manhattan 32.9% |
+| Weekend effect | None: weekends are 28.2% of trading days and bring 27.9% of revenue |
 
-## 📂 Dataset Description
-The dataset includes:
-- Order ID  
-- Order Date & Time  
-- Product Category  
-- Product Name  
-- Quantity Sold  
-- Unit Price  
-- Total Sales  
+**What this means for the business**
+- **Staff for the morning.** Almost half of revenue lands in four hours, so the 7–10am shift is where extra staff and faster service pay off most.
+- **Lift the afternoon.** From 11am onwards each hour brings in only 4–7% of revenue, about half a peak-morning hour, and there's no weekend lift. Off-peak offers (for example, a bakery item with tea after 3pm) target that spare capacity.
+- **Coffee and tea drive two-thirds of sales**, so stock-outs of espresso beans or chai would hurt more than any other category.
 
-> Dataset is cleaned and transformed before analysis.
+*Figures computed from `Coffee Shop Sales.xlsx`; revenue = quantity × unit price.*
 
----
+## Dashboard features
 
-## 📈 Key Insights
-- Identified peak sales hours and high-demand days  
-- Top coffee products contributing to maximum revenue  
-- Monthly revenue growth and seasonal trends  
-- Product-wise performance comparison  
+- **KPI cards:** total sales, total orders and quantity sold, with month-over-month growth
+- **Calendar heat map:** daily sales by week and weekday, with a custom tooltip page showing that day's sales, orders, quantity and MoM change
+- **Day × hour heat map:** shows the morning rush at a glance
+- **Sales by store, product category and product type**
+- **Weekday vs weekend split**
+- **Month slicer** that drives every visual
 
----
+## How I built it
 
-## 📊 Dashboard Features
-- Interactive slicers (Date, Product, Category)
-- KPIs: Total Sales, Revenue, Quantity Sold
-- Time-series analysis (Daily / Monthly trends)
-- Product performance charts
+- **Power Query:** cleaned and typed the raw data, and added a calculated `Sales` column (quantity × unit price) and an `Hour` column
+- **Data model:** a dedicated **Date table** related to transactions, with month-year, week number, day name and weekday/weekend flags
+- **DAX measures:** `Total Sales`, and `MOM Growth & Diff Sales` for month-over-month change in the tooltips
+- **Design:** custom background, icons and a report-page tooltip for the heat map
 
----
+## Run it
 
-## 🚀 Business Impact
-- Helps management optimize inventory planning  
-- Improves sales strategy by identifying best sellers  
-- Supports promotional planning based on demand trends  
+1. Download `Coffee Sales Analysis.pbix` and `Coffee Shop Sales.xlsx`.
+2. Open the `.pbix` in **Power BI Desktop**.
+3. If prompted, point the data source at your copy of the Excel file.
 
----
+## Tech stack
 
-## 🖼️ Dashboard Preview
-![Dashboard Screenshot](dashboard.png)
-
----
-
-
+Power BI Desktop · Power Query · DAX · data modelling (Date table) · Excel
